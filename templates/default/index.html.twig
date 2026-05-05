@@ -1,0 +1,478 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+{# ─── Hero ────────────────────────────────────────────────────── #}
+<section class="k-hero" id="home">
+  <div class="k-container">
+    <div class="k-hero-grid">
+
+      <div class="k-hero-copy k-fade-in">
+        <div class="k-eyebrow"><em>Resina artigianale · pezzi unici</em></div>
+        <h1 class="k-h1">Piccoli oggetti<br>che <em>raccontano</em> di te.</h1>
+        <p class="k-lead" style="margin-top:1.25rem;max-width:520px">
+          Portachiavi e accessori in resina, modellati e colati a mano.
+          Scegli la lettera, il colore e la decorazione: ogni pezzo è unico, come la persona che lo porta.
+        </p>
+        <div class="k-hero-actions">
+          <a href="#crea" class="k-btn k-btn-primary k-btn-lg">Crea il tuo portachiavi</a>
+          <a href="#vetrina" class="k-btn k-btn-outline k-btn-lg">Sfoglia i prodotti</a>
+        </div>
+      </div>
+
+      <div class="k-hero-art">
+        <div class="k-hero-blob"></div>
+        <div class="k-hero-art-photo">
+          <svg width="220" height="297" viewBox="0 0 220 300" style="overflow:visible">
+            <defs>
+              <radialGradient id="gh" cx="35%" cy="30%" r="80%">
+                <stop offset="0%" stop-color="#fff" stop-opacity="0.55"/>
+                <stop offset="60%" stop-color="#F2C9A8" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#F2C9A8"/>
+              </radialGradient>
+              <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                <feOffset dy="6"/>
+                <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
+                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <circle cx="110" cy="40" r="22" fill="none" stroke="#8A5A3A" stroke-width="6"/>
+            <path d="M88 40 C70 60,80 80,110 70" stroke="#8A5A3A" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <line x1="110" y1="62" x2="110" y2="92" stroke="#8A5A3A" stroke-width="3"/>
+            <g filter="url(#sh)">
+              <ellipse cx="110" cy="180" rx="78" ry="92" fill="url(#gh)"/>
+              <ellipse cx="80" cy="135" rx="28" ry="14" fill="#fff" opacity="0.4"/>
+            </g>
+            <g opacity="0.85">
+              <circle cx="80" cy="200" r="6" fill="#F5EFE6"/>
+              <circle cx="80" cy="194" r="3" fill="#C26B4A"/><circle cx="86" cy="204" r="3" fill="#C26B4A"/>
+              <circle cx="74" cy="204" r="3" fill="#C26B4A"/><circle cx="80" cy="210" r="3" fill="#C26B4A"/>
+              <circle cx="74" cy="194" r="3" fill="#C26B4A"/><circle cx="86" cy="194" r="3" fill="#C26B4A"/>
+              <circle cx="140" cy="225" r="5" fill="#F5EFE6"/>
+              <circle cx="140" cy="220" r="2.5" fill="#A4533A"/><circle cx="145" cy="227" r="2.5" fill="#A4533A"/>
+              <circle cx="135" cy="227" r="2.5" fill="#A4533A"/>
+              <path d="M55 165 q4 -10 12 -8 q-4 6 -12 8 z" fill="#6B7F5A" opacity=".75"/>
+              <path d="M155 145 q4 -10 12 -8 q-4 6 -12 8 z" fill="#6B7F5A" opacity=".75"/>
+            </g>
+            <text x="110" y="200" text-anchor="middle" font-family="'Playfair Display',serif" font-style="italic" font-weight="500" font-size="86" fill="#2C1F17" opacity="0.88" paint-order="stroke" stroke="#fff" stroke-width="2" stroke-opacity=".35">A</text>
+          </svg>
+        </div>
+        <div class="k-hero-tag k-hero-tag-1">
+          <div class="k-tag-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <div><strong>Pezzo unico</strong><span>Mai due uguali</span></div>
+        </div>
+        <div class="k-hero-tag k-hero-tag-2">
+          <div class="k-tag-icon"><i class="fa-solid fa-seedling"></i></div>
+          <div><strong>Fiori veri</strong><span>Raccolti e essiccati</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ─── Marquee ─────────────────────────────────────────────────── #}
+<div class="k-marquee" aria-hidden="true">
+  <div class="k-marquee-track">
+    {% for i in 1..4 %}
+      <span>
+        Fatto a mano <i class="fa-solid fa-circle"></i>
+        Pezzi unici <i class="fa-solid fa-circle"></i>
+        Personalizzabile <i class="fa-solid fa-circle"></i>
+        Resina artigianale <i class="fa-solid fa-circle"></i>
+      </span>
+    {% endfor %}
+  </div>
+</div>
+
+{# ─── Vetrina ─────────────────────────────────────────────────── #}
+<section class="k-section" id="vetrina">
+  <div class="k-container">
+    <div class="k-section-head">
+      <div class="k-eyebrow k-eyebrow-both"><em>La vetrina</em></div>
+      <h2 class="k-h2">I <em>portachiavi</em> disponibili</h2>
+      <p class="k-muted">Quattro pezzi attualmente in vetrina. Tutti possono essere ricreati su misura con la lettera, il colore e la decorazione che preferisci.</p>
+    </div>
+    <div class="k-catalog">
+
+      {% for p in products %}
+      <article class="k-product">
+        <div class="k-product-img">
+          <img src="{{ asset('images/prodotti/' ~ p.image) }}" alt="Portachiavi {{ p.letter }}" loading="lazy">
+        </div>
+        <div class="k-product-body">
+          <h4 class="k-h4">Portachiavi · {{ p.letter }}</h4>
+          <p>{{ p.desc }}</p>
+          <div class="k-product-foot">
+            <div class="k-product-price">{{ p.price }}</div>
+            <a href="mailto:info@kajmvvv.it?subject=Richiesta%20portachiavi%20{{ p.letter }}" class="k-product-cta">Richiedi <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{# ─── Configuratore ──────────────────────────────────────────── #}
+<section class="k-section k-section-cream" id="crea">
+  <div class="k-container">
+    <div class="k-section-head">
+      <div class="k-eyebrow k-eyebrow-both"><em>Personalizza</em></div>
+      <h2 class="k-h2">Crea il <em>tuo pezzo</em> in cinque passi</h2>
+      <p class="k-muted">Lettera, colore, decorazione, cordino e i tuoi dati. Anteprima in tempo reale e ordine via Instagram o email.</p>
+    </div>
+
+    <div class="k-config">
+
+      {# ── Preview live ── #}
+      <div class="k-config-preview">
+        <div class="k-preview-stage" id="preview-stage"></div>
+        <div class="k-preview-meta">
+          <span>Anteprima dal vivo</span>
+        </div>
+      </div>
+
+      {# ── Pannello configurazione ── #}
+      <div class="k-config-panel">
+
+        {# Step pills #}
+        <div class="k-config-steps">
+          <div class="k-step-pill active" data-step="0"><span class="k-step-num"><span>1</span></span>Lettera</div>
+          <div class="k-step-pill" data-step="1"><span class="k-step-num"><span>2</span></span>Colore</div>
+          <div class="k-step-pill" data-step="2"><span class="k-step-num"><span>3</span></span>Decoro</div>
+          <div class="k-step-pill" data-step="3"><span class="k-step-num"><span>4</span></span>Cordino</div>
+          <div class="k-step-pill" data-step="4"><span class="k-step-num"><span>5</span></span>Dati</div>
+        </div>
+
+        {# Step 0 — Lettera #}
+        <div class="k-step-content k-fade-in" data-step-idx="0">
+          <div class="k-step-title">Step 01</div>
+          <h3 class="k-step-q">Quale lettera ti rappresenta?</h3>
+          <p class="k-step-help">Scegli l'iniziale del tuo nome o quella di chi ti sta a cuore.</p>
+          <div class="k-letter-grid">
+            {% for l in alphabet %}
+            <button class="k-letter{% if l == 'A' %} active{% endif %}" data-letter="{{ l }}">{{ l }}</button>
+            {% endfor %}
+          </div>
+        </div>
+
+        {# Step 1 — Colore #}
+        <div class="k-step-content" data-step-idx="1" style="display:none">
+          <div class="k-step-title">Step 02</div>
+          <h3 class="k-step-q">Che colore di resina?</h3>
+          <p class="k-step-help">Sette tonalità calde ispirate alla terra e ai materiali naturali.</p>
+          <div class="k-color-row">
+            {% for c in colors %}
+            <div class="k-color-chip{% if c.id == 'rosa' %} active{% endif %}"
+                 data-color-id="{{ c.id }}"
+                 data-color-hex="{{ c.hex }}"
+                 data-color-label="{{ c.label }}">
+              <span class="k-color-swatch" style="background:{{ c.hex }}"></span>
+              {{ c.label }}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        {# Step 2 — Decorazione #}
+        <div class="k-step-content" data-step-idx="2" style="display:none">
+          <div class="k-step-title">Step 03</div>
+          <h3 class="k-step-q">Aggiungi una decorazione interna</h3>
+          <p class="k-step-help">Fiori secchi raccolti a mano, glitter, foglia oro o microperle.</p>
+          <div class="k-deco-grid">
+            {% for d in decos %}
+            <div class="k-deco-card{% if d.id == 'fiori' %} active{% endif %}"
+                 data-deco-id="{{ d.id }}"
+                 data-deco-cost="{{ d.cost }}"
+                 data-deco-label="{{ d.name }}">
+              <div class="k-deco-icon"><i class="fa-solid {{ d.icon }}"></i></div>
+              <div class="k-deco-name">{{ d.name }}</div>
+              <div class="k-deco-extra">{{ d.extra }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        {# Step 3 — Cordino #}
+        <div class="k-step-content" data-step-idx="3" style="display:none">
+          <div class="k-step-title">Step 04</div>
+          <h3 class="k-step-q">Scegli il cordino o moschettone</h3>
+          <p class="k-step-help">L'ultimo dettaglio. Combina con la palette del portachiavi.</p>
+          <div class="k-cord-row">
+            {% for c in cords %}
+            <div class="k-cord-card{% if c.id == 'silver' %} active{% endif %}"
+                 data-cord-id="{{ c.id }}"
+                 data-cord-cost="{{ c.cost }}"
+                 data-cord-label="{{ c.name }}">
+              <div class="k-cord-vis"><i class="fa-solid {{ c.icon }}"></i></div>
+              <div class="k-cord-info">
+                <div class="k-cord-name">{{ c.name }}</div>
+                <div class="k-cord-desc">{{ c.desc }}</div>
+              </div>
+              <div class="k-cord-extra">{{ c.extra }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        {# Step 4 — Dati #}
+        <div class="k-step-content" data-step-idx="4" style="display:none">
+          <div class="k-step-title">Step 05</div>
+          <h3 class="k-step-q">Dimmi qualcosa di te</h3>
+          <p class="k-step-help">Mi servono solo i dati per ricontattarti e confermare l'ordine.</p>
+          <div class="k-info-form">
+            <div class="k-info-row">
+              <div class="k-info-field">
+                <label>Nome</label>
+                <input id="info-nome" placeholder="Come ti chiami?">
+              </div>
+              <div class="k-info-field">
+                <label>Come preferisci essere ricontattata/o?</label>
+                <div class="k-info-channel">
+                  <button type="button" id="ch-instagram" class="active" onclick="selectChannel('instagram')"><i class="fa-brands fa-instagram"></i> Instagram</button>
+                  <button type="button" id="ch-email"     onclick="selectChannel('email')"><i class="fa-solid fa-envelope"></i> Email</button>
+                </div>
+              </div>
+            </div>
+            <div class="k-info-field">
+              <label id="contatto-label">Il tuo @username Instagram</label>
+              <input id="info-contatto" placeholder="@iltuonome">
+            </div>
+            <div class="k-info-field">
+              <label>Note <small style="color:var(--k-ink-3);font-weight:400">(facoltative)</small></label>
+              <textarea id="info-note" rows="3" placeholder="Es: è un regalo per il compleanno della mia amica, mi servirebbe entro il 20..."></textarea>
+            </div>
+            <p class="k-info-priv"><i class="fa-solid fa-lock"></i> I tuoi dati servono solo a confermare l'ordine. Niente newsletter, niente terzi.</p>
+          </div>
+        </div>
+
+        {# Riepilogo (stato finale) #}
+        <div id="step-done" style="display:none;flex-direction:column;height:100%">
+          <div class="k-step-title">Riepilogo</div>
+          <h3 class="k-step-q">Il tuo <em style="font-family:'Playfair Display';font-style:italic;color:var(--k-terracotta)">portachiavi</em> è pronto.</h3>
+          <p class="k-step-help">Inviaci il riepilogo via Instagram o email. Confermiamo entro 24h e iniziamo a colare la resina.</p>
+          <div class="k-config-recap">
+            <div class="k-config-recap-row"><span>Lettera</span><strong id="recap-letter">—</strong></div>
+            <div class="k-config-recap-row"><span>Colore</span><strong id="recap-color">—</strong></div>
+            <div class="k-config-recap-row"><span>Decorazione</span><strong id="recap-deco">—</strong></div>
+            <div class="k-config-recap-row"><span>Cordino</span><strong id="recap-cord">—</strong></div>
+            <div class="k-config-recap-row" style="padding-top:10px;border-top:1px solid var(--k-line)">
+              <span>Per</span><strong id="recap-nome">—</strong>
+            </div>
+            <div class="k-config-recap-row">
+              <span id="recap-channel-lbl">Instagram</span><strong id="recap-contatto">—</strong>
+            </div>
+            <div class="k-config-recap-row" id="recap-note-row" style="display:none">
+              <span>Note</span><strong id="recap-note" style="max-width:60%;text-align:right;font-weight:500;font-size:.88rem"></strong>
+            </div>
+            <div class="k-config-recap-row total"><span>Totale</span><strong id="recap-total">€8</strong></div>
+          </div>
+          <div class="k-config-foot" style="margin-top:1.5rem">
+            <button class="k-btn k-btn-ghost" id="btn-restart">
+              <i class="fa-solid fa-rotate-left"></i> Ricomincia
+            </button>
+            <button class="k-btn k-btn-primary" id="btn-send">
+              Invia richiesta <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+
+        {# Footer navigazione step #}
+        <div class="k-config-foot" id="config-foot">
+          <div class="k-config-summary">
+            Totale stimato
+            <strong id="config-total">€8</strong>
+          </div>
+          <div class="k-config-nav">
+            <button class="k-btn k-btn-ghost" id="btn-prev" disabled>
+              <i class="fa-solid fa-arrow-left"></i> Indietro
+            </button>
+            <button class="k-btn k-btn-primary" id="btn-next">
+              Avanti <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {# Modal invio ordine #}
+  <div class="k-modal-back" id="send-modal">
+    <div class="k-modal">
+      <button class="k-modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="k-eyebrow"><em>Ultimo passo</em></div>
+      <h3 class="k-h3" style="margin-bottom:8px">Come vuoi inviare l'ordine?</h3>
+      <p class="k-muted" style="font-size:.9rem">Copia il riepilogo qui sotto e inviacelo. Ti rispondiamo con tempi e modalità di pagamento.</p>
+      <div class="k-config-recap" id="modal-recap" style="margin-top:18px"></div>
+      <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
+        <a class="k-btn k-btn-primary" href="https://instagram.com/kajmvvv" target="_blank" rel="noopener noreferrer" style="flex:1;justify-content:center">
+          <i class="fa-brands fa-instagram"></i> Scrivi su Instagram
+        </a>
+        <a class="k-btn k-btn-outline" id="modal-email" href="#" style="flex:1;justify-content:center">
+          <i class="fa-solid fa-envelope"></i> Invia email
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ─── Come funziona ───────────────────────────────────────────── #}
+<section class="k-section k-section-sand">
+  <div class="k-container">
+    <div class="k-section-head">
+      <div class="k-eyebrow k-eyebrow-both"><em>Come funziona</em></div>
+      <h2 class="k-h2">Dall'idea al <em>portachiavi</em> in pochi giorni</h2>
+    </div>
+    <div class="k-process">
+      <div class="k-process-step">
+        <div class="k-process-num">01<small>·</small></div>
+        <h4>Personalizzi</h4>
+        <p>Scegli lettera, colore, decorazione e cordino dal configuratore.</p>
+      </div>
+      <div class="k-process-step">
+        <div class="k-process-num">02<small>·</small></div>
+        <h4>Conferma</h4>
+        <p>Riceviamo la richiesta via Instagram o email e confermiamo entro 24h.</p>
+      </div>
+      <div class="k-process-step">
+        <div class="k-process-num">03<small>·</small></div>
+        <h4>Realizziamo</h4>
+        <p>Coliamo la resina, inseriamo le decorazioni, lasciamo asciugare 48h.</p>
+      </div>
+      <div class="k-process-step">
+        <div class="k-process-num">04<small>·</small></div>
+        <h4>Te lo consegniamo</h4>
+        <p>Ti contattiamo appena è pronto e concordiamo insieme i dettagli.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ─── Chi sono — Alice ────────────────────────────────────────── #}
+<section class="k-section" id="alice">
+  <div class="k-container">
+    <div class="k-about">
+      <div class="k-about-img">
+        <img src="{{ asset('images/alice.jpg') }}" alt="Alice, artigiana Kajmvvv">
+        <div class="k-about-sig">— Alice</div>
+      </div>
+      <div>
+        <div class="k-eyebrow"><em>Chi sono</em></div>
+        <h2 class="k-h2">Mi chiamo Alice, e <em>coloro la resina</em>.</h2>
+        <p>Lavoro nel mio piccolo studio in Lombardia. Ho iniziato per gioco, regalando portachiavi alle amiche con le loro iniziali. Da lì non mi sono più fermata.</p>
+        <blockquote class="k-about-quote">
+          "Mi piace l'idea che ognuno possa portare con sé un pezzo unico, fatto pensando a una storia."
+        </blockquote>
+        <ul class="k-about-list">
+          <li>
+            <i class="fa-solid fa-hand-sparkles"></i>
+            <div><strong>Ogni pezzo è colato a mano</strong><small>Niente stampi industriali, niente serie identiche.</small></div>
+          </li>
+          <li>
+            <i class="fa-solid fa-leaf"></i>
+            <div><strong>Fiori raccolti localmente</strong><small>Essiccati e selezionati uno a uno per ogni creazione.</small></div>
+          </li>
+          <li>
+            <i class="fa-solid fa-clock"></i>
+            <div><strong>2-5 giorni di lavorazione</strong><small>Il tempo necessario per asciugare e rifinire la resina.</small></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ─── Mercatini ───────────────────────────────────────────────── #}
+<section class="k-section" id="eventi">
+  <div class="k-container">
+    <div class="k-section-head">
+      <div class="k-eyebrow k-eyebrow-both"><em>Dove trovarmi</em></div>
+      <h2 class="k-h2">Ai <em>mercatini</em> e in giro per la Lombardia</h2>
+      <p class="k-muted">Ogni mese sono in un mercatino, una fiera o un pop-up. Vieni a salutare, prova i pezzi dal vivo e personalizza la tua iniziale insieme a me.</p>
+    </div>
+    <div class="k-events">
+
+      <article class="k-event">
+        <div class="k-event-img">
+          {% if "2026-03-26"|date("U") > "now"|date("U") %}<span class="k-event-status upcoming">In arrivo</span>{% endif %}
+          <img src="{{ asset('images/mercatini.png') }}" alt="Mercatino" loading="lazy">
+        </div>
+        <div class="k-event-body">
+          <h4>Festa del Castello</h4>
+          <p>Domenica al Castello Visconti di Somma Lombardo. Vieni a trovarmi, personalizzazioni dal vivo!</p>
+          <div class="k-event-meta">
+            <div class="k-event-meta-row"><i class="fa-solid fa-location-dot"></i>Castello Visconti, Somma Lombardo (VA)</div>
+            <div class="k-event-meta-row"><i class="fa-regular fa-calendar"></i>26 Marzo 2026</div>
+            <div class="k-event-meta-row"><i class="fa-regular fa-clock"></i>10:00 — 18:30</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="k-events-note">
+      Per le date più aggiornate seguimi su <a href="https://instagram.com/kajmvvv" target="_blank" rel="noopener noreferrer">@kajmvvv</a> — pubblico le novità nelle stories.
+    </p>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/configurator.js') }}"></script>
+<script>
+(function () {
+  // ── Smooth scroll + offset nav ──
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ── Scroll-spy ──
+  var sections = ['home', 'vetrina', 'crea', 'alice', 'eventi'];
+  var links = document.querySelectorAll('#k-menu a[data-section]');
+  function updateNav() {
+    var y = window.scrollY + 120;
+    var cur = sections[0];
+    for (var i = sections.length - 1; i >= 0; i--) {
+      var el = document.getElementById(sections[i]);
+      if (el && el.offsetTop <= y) { cur = sections[i]; break; }
+    }
+    links.forEach(function (a) {
+      a.classList.toggle('active', a.dataset.section === cur);
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+
+  // ── Preferiti ──
+  document.querySelectorAll('.k-product-fav').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      btn.classList.toggle('active');
+      var icon = btn.querySelector('i');
+      icon.className = btn.classList.contains('active') ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+    });
+  });
+
+  // ── Toast ──
+  function showToast(msg) {
+    var toast = document.getElementById('k-toast');
+    document.getElementById('k-toast-msg').textContent = msg;
+    toast.classList.add('show');
+    setTimeout(function () { toast.classList.remove('show'); }, 3500);
+  }
+  window.showKajToast = showToast;
+
+})();
+</script>
+{% endblock %}

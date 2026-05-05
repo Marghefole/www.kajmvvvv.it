@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}Antica Farmacia dei sani, un nome decisamente inusuale ma che esprime l’idea di considerare un luogo di cura per lo spirito e per la mente utilizzando i nostri sensi.{% endblock %}
+
+{% block sliderTitleText %}Antica Farmacia dei Sani{% endblock %}
+{% block sliderSubtitleText %}Ristorante e Vineria con specialità lombarde, piemontesi e locali{% endblock %}
+{% block sliderInnerVideo %}
+    <div class="video-wrap no-placeholder">
+        <video poster="{{ asset ('images/graphics_2025_12_12/home/poster.webp') }}" preload="auto" loop autoplay muted playsinline>
+            <source src='{{ asset ('images/graphics_2025_12_12/home/video.mp4') }}' type='video/mp4'>
+        </video>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section id="content">
+        <!-- L'osteria -->
+        <div class="section parallax m-0 border-top-0 m_b_40p">
+            <img src="{{ asset ('images/graphics_2025_12_12/texture-light.webp') }}" class="parallax-bg img_parallax" alt="L'osteria">
+            <div class="container jost_font p_tb_20p">
+                <div class="row">
+                    <div class="col-12 col-lg-6 m_b_20p">
+                        <a href="{{ asset ('images/graphics_2025_12_12/home/osteria.webp') }}" data-lightbox="image"><img src="{{ asset ('images/graphics_2025_12_12/home/osteria.webp') }}" class="box_shadow" alt="Osteria"></a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h3 class="whisper_font color_text h3_title m_b_20p">L'osteria</h3>
+                        <p class="color_text m_b_10p txt_a_j">Antica Farmacia dei sani, un nome decisamente inusuale ma che esprime l’idea di considerare un luogo di cura per lo spirito e per la mente utilizzando i nostri sensi più primordiali: vista, olfatto e gusto.</p>
+                        <p class="color_text m_b_10p"><b>Ristorante e Vineria con specialità lombarde, piemontesi e locali.</b></p>
+                        <p class="color_text txt_a_j">Il nostro desiderio quotidiano è accompagnarvi in un’esperienza culinaria di scoperta e piacere, reinterpretando i piatti della tradizione e del territorio con la nostra curiosità e costante ricerca, abbinando la migliore selezione di vini e distillati con proprietà uniche.</p>
+                        <a href="{{ path ('tavern') }}" class="button button-rounded button-pr f_w_300">Scopri di più</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- La cucina -->
+        <div class="section parallax m-0 border-top-0 dark m_b_40p">
+            <img src="{{ asset ('images/graphics_2025_12_12/texture-dark.webp') }}" class="parallax-bg img_parallax" alt="La cucina">
+            <div class="container jost_font p_tb_20p">
+                <div class="row">
+                    <div class="col-12 col-lg-6 m_b_20p">
+                        <h3 class="whisper_font h3_title m_b_20p">La cucina</h3>
+                        <p class="txt_a_j">Da Antica Farmacia dei Sani ricerchiamo solo ingredienti selezionati di stagione e carni di qualità, come la Fassona Piemontese. La carne viene frollata interamente da noi con un minimo di 21 giorni di stagionatura.</p>
+                        <a href="{{ asset ('documents/antica-farmacia-dei-sani-menu-alla-carta-aprile-maggio-2026.pdf') }}" class="button button-rounded button-pr f_w_300" target="_blank">Scarica il menù</a>
+                        <a href="{{ path ('kitchen') }}" class="button button-rounded button-pr f_w_300">Scopri di più</a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <a href="{{ asset ('images/graphics_2025_12_12/home/cucina.webp') }}" data-lightbox="image"><img src="{{ asset ('images/graphics_2025_12_12/home/cucina.webp') }}" class="box_shadow" alt="Cucina"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- La vineria -->
+        <div class="section parallax m-0 border-top-0 m_b_40p">
+            <img src="{{ asset ('images/graphics_2025_12_12/texture-light.webp') }}" class="parallax-bg img_parallax" alt="La vineria">
+            <div class="container jost_font p_tb_20p">
+                <div class="row">
+                    <div class="col-12 col-lg-6 m_b_20p">
+                        <a href="{{ asset ('images/graphics_2025_12_12/home/vineria.webp') }}" data-lightbox="image"><img src="{{ asset ('images/graphics_2025_12_12/home/vineria.webp') }}" class="box_shadow_alt" alt="Cucina"></a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h3 class="whisper_font h3_title m_b_20p">La vineria</h3>
+                        <p class="m_b_10p txt_a_j">Antica Farmacia dei Sani è anche enoteca-vineria.</p>
+                        <p class="m_b_10p txt_a_j">Il nostro locale è Brand Ambassador di Tenuta Montemagno, per questo troverai sempre i vini a prezzo di cantina, con tutta l’intera produzione e alcune anticipazioni in esclusiva dei prodotti della Tenuta Montemagno.</p>
+                        <p class="txt_a_j">Acquista le migliori bottiglie al prezzo di cantina.</p>
+                        <a href="{{ path ('winery') }}" class="button button-rounded button-pr f_w_300">Scopri di più</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ci hanno scelto -->
+        <div class="section text-center m-0 bg_w">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="whisper_font color_text h3_title m_b_20p">Ci hanno scelto</h3>
+                        <ul class="clients-grid row row-cols-3 row-cols-sm-3">
+                            <li class="col"><a href="http://www.tenutamontemagno.it/" target="_blank"><img style="width:150px; margin:auto; background: white; padding:10px" src="{{ asset ('images/graphics_2025_12_12/home/tm.webp') }}" alt="Tenuta Montemagno"></a></li>
+                            <li class="col"><a href="https://www.eccellenzeitaliane.com/aziende/ANTICA+FARMACIA+DEI+SANI/10079282" target="_blank"><img style="width:150px; margin:auto; background: white" src="{{ asset ('images/graphics_2025_12_12/home/eccellenze-italiane.webp') }}" alt="Eccellenze Italiane"></a></li>
+                            <li class="col"><a href="https://bni-varese.it/25-varese-bni-gallo-rosso/it/index" target="_blank"><img style="width:150px; margin:auto; background: white" src="{{ asset ('images/graphics_2025_12_12/home/gallorosso.webp') }}" alt="Gallorosso"></a></li>
+                            <li class="col"><a href="http://www.copperesteel.it/" target="_blank"><img style="width:150px; margin:auto; background: white" src="{{ asset ('images/graphics_2025_12_12/home/copper-e-steel.webp') }}" alt="Copper e Steel"></a></li>
+                            <li class="col"><a href="https://www.btsr.com/" target="_blank"><img style="width:150px; margin:auto; background: white" src="{{ asset ('images/graphics_2025_12_12/home/btsr.webp') }}" alt="BTSR"></a></li>
+                            <li class="col"><a href="http://www.otticapisani.com/" target="_blank"><img style="width:150px; margin:auto; background: white" src="{{ asset ('images/graphics_2025_12_12/home/pisani.webp') }}" alt="Ottica Pisani"></a></li>
+                            <li class="col"><a href="https://dhgroupsrl.it/" target="_blank"><img style="width:150px; margin:auto; background: white" src="{{ asset ('images/graphics_2025_12_12/home/dhgroup.webp') }}" alt="Dreams House Group srl"></a></li>
+                            <li class="col"><a href="http://www.folegattizandonellanecca.it/" target="_blank"><img style="width:150px; margin:auto; background: white" src="{{ asset ('images/graphics_2025_12_12/home/fzn.webp') }}" alt="Studio Odontoiatrico Associato Dott. Folegatti – Dott. Zandonella Necca"></a></li>
+                            <li class="col"><a href="https://www.rpgmultimedia.it/" target="_blank"><img style="width:150px; margin:auto; background: white" src="{{ asset ('images/graphics_2025_12_12/home/rpg.webp') }}" alt="R.P.G. Servizi Multimediali"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#% block modals %}
+    {% set adviceModalBody %}
+        <div class="row">
+            <div class="col-12 txt_a_c">
+                <p class="m_tb_10p">Scopri il nostro nuovo catalogo di regalistica! Tante idee originali e prodotti esclusivi.</p>
+                <img class="m_tb_10p" width="400" src="{{ asset('images/graphics_2025_12_12/advice/catalogo-regalistica-2025.webp') }}" alt="Nuovo catalogo regalistica Antica Farmacia dei Sani" />
+                <div class="txt_a_c">
+                    <a href="{{ asset('documents/catalogo-regalistica-2025.pdf') }}" class="button button-rounded button-primary" download target="_blank"><i class="fa-solid fa-download"></i> Scarica il catalogo</a>
+                </div>
+                <hr style="margin: 20px 0; border: 1px solid #000;" />
+                <div class="txt_a_c">
+                    <button class="button button-rounded button-small button-primary width_100p" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    {% endset %}
+    {% include 'components/modals/modal_details.html.twig' with {'type':'advice', 'text':'Catalogo regalistica 2025', 'modalBody':adviceModalBody, 'modalWidth': 'lg'} %}
+    <script>
+        $(document).ready(function() {
+            {% if not app.session.get('showAdviceModal') %}
+                adviceDetailsModal();
+                {{ app.session.set('showAdviceModal', true) }}
+            {% endif %}
+        });
+
+        function showAdvice(){
+            $('#modalAdvice').modal('show');
+        }
+    </script>
+{% endblock %#}

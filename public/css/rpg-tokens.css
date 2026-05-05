@@ -1,0 +1,199 @@
+/* ============================================================
+   RPG Canvas Design System — Colors & Type
+   Based on Canvas 7 theme (Semicolon Web) as used by R.P.G.
+   ============================================================ */
+
+/* Webfonts — match Canvas defaults + business demo */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700;900&display=swap");
+
+:root {
+  /* ---------- Brand color (Canvas "Business" demo) ---------- */
+  --rpg-theme:          #00BED7;          /* primary brand cyan */
+  --rpg-theme-rgb:      0, 190, 215;
+  --rpg-theme-hover:    #00a7bd;
+  --rpg-theme-soft:     rgba(0, 190, 215, .12);
+
+  /* Canvas default alt theme (teal) — some demos use this */
+  --rpg-theme-alt:      #1abc9c;
+  --rpg-theme-alt-rgb:  26, 188, 156;
+
+  /* Accent colors surfaced in Canvas palette */
+  --rpg-red:        #c02942;
+  --rpg-blue:       #1265a8;
+  --rpg-green:      #59ba41;
+  --rpg-amber:      #eb9c4d;
+  --rpg-aqua:       #40c0cb;
+  --rpg-purple:     #5d4157;
+  --rpg-yellow:     #ecd078;
+
+  /* Semantic (bootstrap-aligned) */
+  --rpg-success:    #198754;
+  --rpg-info:       #0dcaf0;
+  --rpg-warning:    #ffc107;
+  --rpg-danger:     #dc3545;
+
+  /* ---------- Contrast / neutrals (Canvas "contrast" scale) ---------- */
+  --rpg-contrast-0:    #ffffff;
+  --rpg-contrast-100:  #f8f9fa;
+  --rpg-contrast-200:  #e9ecef;
+  --rpg-contrast-300:  #dee2e6;
+  --rpg-contrast-400:  #ced4da;
+  --rpg-contrast-500:  #adb5bd;
+  --rpg-contrast-600:  #6c757d;
+  --rpg-contrast-700:  #495057;
+  --rpg-contrast-800:  #343a40;
+  --rpg-contrast-900:  #212529;
+  --rpg-contrast-1000: #000000;
+
+  /* ---------- Foregrounds / backgrounds (semantic) ---------- */
+  --rpg-fg-1:       var(--rpg-contrast-900);   /* headings */
+  --rpg-fg-2:       var(--rpg-contrast-800);   /* body */
+  --rpg-fg-3:       var(--rpg-contrast-600);   /* muted */
+  --rpg-fg-invert:  var(--rpg-contrast-0);
+
+  --rpg-bg:         #ffffff;                    /* page */
+  --rpg-bg-offset:  var(--rpg-contrast-100);    /* section alt */
+  --rpg-bg-dark:    #111;                       /* dark sections / footer */
+  --rpg-bg-dark-2:  #1d1d1d;                    /* footer inner / copyright */
+
+  --rpg-line:       rgba(0, 0, 0, .1);
+  --rpg-line-soft:  rgba(0, 0, 0, .06);
+  --rpg-line-dark:  rgba(255, 255, 255, .1);
+
+  /* ---------- Type (Canvas business demo) ---------- */
+  --rpg-font-primary:   "Poppins", sans-serif;        /* headings */
+  --rpg-font-body:      "Open Sans", sans-serif;      /* body */
+  --rpg-font-secondary: "Playfair Display", serif;    /* <em>, decorative */
+  --rpg-font-mono:      ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --rpg-fs-body:   1rem;        /* 16px */
+  --rpg-fs-small:  0.875rem;
+  --rpg-fs-h6:     0.875rem;
+  --rpg-fs-h5:     1.125rem;
+  --rpg-fs-h4:     1.375rem;
+  --rpg-fs-h3:     1.625rem;
+  --rpg-fs-h2:     1.875rem;    /* 30px */
+  --rpg-fs-h1:     2.25rem;     /* 36px */
+  --rpg-fs-display: 4.5rem;     /* 72px — slider captions */
+
+  --rpg-lh-base:   1.5;
+  --rpg-lh-content: 1.65;
+  --rpg-lh-tight:  1.25;
+
+  --rpg-fw-light:    300;
+  --rpg-fw-normal:   400;
+  --rpg-fw-medium:   500;
+  --rpg-fw-semibold: 600;
+  --rpg-fw-bold:     700;
+
+  /* ---------- Spacing / radius / shadow ---------- */
+  --rpg-space-1:  .25rem;
+  --rpg-space-2:  .5rem;
+  --rpg-space-3:  1rem;
+  --rpg-space-4:  1.5rem;
+  --rpg-space-5:  3rem;
+  --rpg-space-6:  5rem;   /* section padding */
+  --rpg-space-section: 5rem;
+
+  --rpg-radius-sm: 2px;
+  --rpg-radius:    4px;
+  --rpg-radius-md: 6px;
+  --rpg-radius-lg: 10px;
+  --rpg-radius-pill: 999px;
+
+  --rpg-shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+  --rpg-shadow:    0 .5rem 1rem rgba(0,0,0,.12);
+  --rpg-shadow-lg: 0 1rem 3rem rgba(0,0,0,.175);
+  --rpg-shadow-card: 0 0 8px rgba(0,0,0,.08);
+
+  --rpg-transition: .3s ease;
+  --rpg-transition-slow: .5s cubic-bezier(.215,.61,.355,1);
+
+  /* Header / layout */
+  --rpg-header-h:         100px;
+  --rpg-header-h-shrink:  60px;
+  --rpg-container-max:    1140px;
+}
+
+/* ---------- Semantic type primitives ---------- */
+body, .rpg-body {
+  font-family: var(--rpg-font-body);
+  font-size: var(--rpg-fs-body);
+  line-height: var(--rpg-lh-base);
+  color: var(--rpg-fg-2);
+  background: var(--rpg-bg);
+}
+
+h1, .rpg-h1,
+h2, .rpg-h2,
+h3, .rpg-h3,
+h4, .rpg-h4,
+h5, .rpg-h5,
+h6, .rpg-h6 {
+  font-family: var(--rpg-font-primary);
+  color: var(--rpg-fg-1);
+  font-weight: var(--rpg-fw-semibold);
+  line-height: var(--rpg-lh-tight);
+  margin: 0 0 1rem 0;
+}
+
+h1, .rpg-h1 { font-size: var(--rpg-fs-h1); }
+h2, .rpg-h2 { font-size: var(--rpg-fs-h2); }
+h3, .rpg-h3 { font-size: var(--rpg-fs-h3); }
+h4, .rpg-h4 { font-size: var(--rpg-fs-h4); font-weight: var(--rpg-fw-semibold); }
+h5, .rpg-h5 { font-size: var(--rpg-fs-h5); font-weight: var(--rpg-fw-bold); }
+h6, .rpg-h6 { font-size: var(--rpg-fs-h6); font-weight: var(--rpg-fw-bold); }
+
+.rpg-display {
+  font-family: var(--rpg-font-primary);
+  font-size: var(--rpg-fs-display);
+  font-weight: var(--rpg-fw-bold);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.rpg-before-heading { /* small italic label above headings */
+  font-family: var(--rpg-font-secondary);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--rpg-theme);
+  margin-bottom: .5rem;
+}
+
+p, .rpg-p {
+  font-family: var(--rpg-font-body);
+  font-size: var(--rpg-fs-body);
+  line-height: var(--rpg-lh-content);
+  color: var(--rpg-fg-2);
+  margin: 0 0 1rem 0;
+}
+
+em { font-family: var(--rpg-font-secondary); }
+
+small, .rpg-small { font-size: var(--rpg-fs-small); }
+
+a, .rpg-link {
+  color: var(--rpg-theme);
+  text-decoration: none;
+  transition: color var(--rpg-transition);
+}
+a:hover, .rpg-link:hover { color: var(--rpg-fg-1); }
+
+code, .rpg-code {
+  font-family: var(--rpg-font-mono);
+  font-size: .9em;
+  background: var(--rpg-contrast-100);
+  border: 1px solid var(--rpg-line);
+  padding: .1em .35em;
+  border-radius: var(--rpg-radius-sm);
+}
+
+::selection { background: var(--rpg-theme); color: #fff; }
+
+/* Utility classes */
+.rpg-bg-theme  { background: var(--rpg-theme); color: #fff; }
+.rpg-bg-dark   { background: var(--rpg-bg-dark); color: #fff; }
+.rpg-bg-offset { background: var(--rpg-bg-offset); }
+.rpg-text-theme { color: var(--rpg-theme); }
+.rpg-text-muted { color: var(--rpg-fg-3); }

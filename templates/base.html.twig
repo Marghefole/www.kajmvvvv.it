@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>{% block title %}Kajmvvv — Resina artigianale fatta a mano{% endblock %}</title>
+  <meta name="description" content="{% block description %}Portachiavi e accessori in resina artigianale, fatti a mano in Lombardia. Personalizza la tua lettera, il colore e la decorazione.{% endblock %}">
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+  {% block stylesheets %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
+  {% endblock %}
+</head>
+<body>
+
+  {% block body %}
+
+
+  {# ─── Nav ─────────────────────────────────────────────────────── #}
+  <header class="k-nav">
+    <div class="k-nav-inner">
+      <a class="k-brand" href="{{ path('homepage') }}">
+        <span class="k-brand-mark">Kajmvvv</span>
+        <span class="k-brand-dot"></span>
+        <span class="k-brand-tag">resina</span>
+      </a>
+      <nav>
+        <ul class="k-menu" id="k-menu">
+          <li><a href="#home"     data-section="home">Home</a></li>
+          <li><a href="#vetrina"  data-section="vetrina">Vetrina</a></li>
+          <li><a href="#crea"     data-section="crea">Personalizza</a></li>
+          <li><a href="#alice"    data-section="alice">Chi sono</a></li>
+          <li><a href="#eventi"   data-section="eventi">Mercatini</a></li>
+          <li><a href="#contatti" data-section="contatti">Contatti</a></li>
+        </ul>
+      </nav>
+      <a href="#crea" class="k-btn k-btn-primary k-btn-sm">Personalizza</a>
+    </div>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  {# ─── Footer ──────────────────────────────────────────────────── #}
+  <footer class="k-footer" id="contatti">
+    <div class="k-container">
+      <div class="k-footer-grid">
+        <div>
+          <div class="k-brand">
+            <span class="k-brand-mark" style="color:#fff">Kajmvvv</span>
+            <span class="k-brand-dot"></span>
+          </div>
+          <p class="k-footer-about">
+            Resina artigianale fatta a mano in Lombardia.
+            Portachiavi e piccoli oggetti unici, personalizzati con la tua iniziale.
+          </p>
+          <div class="k-footer-socials">
+            <a href="https://instagram.com/kajmvvv" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:rizzoalice.ar@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div>
+          <h6>Naviga</h6>
+          <ul>
+            <li><a href="#vetrina">Vetrina</a></li>
+            <li><a href="#crea">Personalizza</a></li>
+            <li><a href="#alice">Chi sono</a></li>
+            <li><a href="#eventi">Mercatini</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+          </ul>
+        </div>
+        <div>
+          <h6>Contatti</h6>
+          <ul>
+            <li><i class="fa-brands fa-instagram" style="color:var(--k-gold);margin-right:8px"></i>@kajmvvv</li>
+            <li><i class="fa-solid fa-envelope" style="color:var(--k-gold);margin-right:8px"></i>rizzoalice.ar@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="k-footer-bottom">
+        <span>© {{ "now"|date("Y") }} Kajmvvv · Resina artigianale · Tutti i diritti riservati</span>
+        <span>Made with Italy</span>
+      </div>
+    </div>
+  </footer>
+
+  {# ─── Toast ───────────────────────────────────────────────────── #}
+  <div class="k-toast" id="k-toast">
+    <i class="fa-solid fa-sparkles"></i> <span id="k-toast-msg"></span>
+  </div>
+
+  {% endblock %}
+
+  {% block javascripts %}{% endblock %}
+
+</body>
+</html>

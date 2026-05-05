@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="content-language" content="it">
+        <title>{% block title %}Antica Farmacia Dei Sani - Osteria della tradizione{% endblock %}</title>
+        
+        <meta name="description" content="{% block description %}{% endblock %}">
+        <meta name="author" content="R.P.G. Servizi Multimediali" />
+        <meta name="copyright" content="Base Food Srl" />  
+        <meta class="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        {% block meta_social %}
+            <meta property="og:locale" content="it" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="{% block fbUrl %}https://www.facebook.com/anticafarmaciadeisani{% endblock %}" />
+            <meta property="og:site" content="Antica Farmacia dei Sani" />
+            <meta name="image" property="og:image" content="{% block fbImage %}https://www.anticafarmaciadeisani.it/images/graphics_2025_12_12/logo.webp{% endblock %}" />
+            <meta property="og:title" content="{% block fbTitle %}Antica Farmacia dei Sani{% endblock %}" />
+            <meta property="og:description" content="{% block fbDesc %}Ristorante e Vineria con specialità lombarde, piemontesi e locali.{% endblock %}" />
+        {% endblock %}
+
+        
+        {% block link_canonical %}<link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+		{% block recaptcha %}{% endblock %}
+        
+        {% block fonts %}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
+        {% endblock %}
+
+        {% block stylesheets %}
+            <!-- Theme -->
+            <link rel="stylesheet" href="{{ asset ('css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset ('css/font-icons.css') }}">
+            <link rel="stylesheet" href="{{ asset ('css/swiper.css') }}">
+	        <link rel="stylesheet" type="text/css" href="{{ asset ('css/richtext.min.css') }}">
+            
+            <!-- Personal -->
+            <link rel="stylesheet" href="{{ asset ('css/personal_2026_02_03/classes.css') }}">
+            <link rel="stylesheet" href="{{ asset ('css/personal_2026_02_03/custom.css') }}">
+            <link rel="stylesheet" href="{{ asset ('css/personal_2026_02_03/themeOverride.css') }}">
+        {% endblock %}
+
+        <!-- Facebook Pixel -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {
+                if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;
+                n.push=n;
+                n.loaded=!0;
+                n.version='2.0';
+                n.queue=[];
+                t=b.createElement(e);
+                t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)
+            }(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1289211065391083');
+            fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1289211065391083&ev=PageView&noscript=1"/></noscript>
+    </head>
+
+	<body id="body" class="stretched {% block body_classes %}{% endblock %}" data-menu-breakpoint="1200" {% block body_on_load %}onload="hidePreloader();"{% endblock %}>
+		{% block preloader %}{% include "components/preloader.html.twig" %}{% endblock %}
+
+		{% block body %}
+			{% for flash_message in app.session.flashbag.get('notice_success') %}
+				<div class="alert alert-dismissible alert-success notice">
+					<i class="bi-hand-thumbs-up-fill"></i><strong>Congratulazioni! </strong> {{ flash_message|trans|raw }}
+					<button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"></button>
+				</div>
+			{% endfor %}
+			
+			{% for flash_message in app.session.flashbag.get('notice_warning') %}
+				<div class="alert alert-dismissible alert-warning notice">
+					<i class="fa-solid fa-triangle-exclamation"></i><strong>Attenzione </strong> {{ flash_message|trans|raw }}
+					<button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"></button>
+				</div>
+			{% endfor %}
+
+			{% for flash_message in app.session.flashbag.get('notice_danger') %}
+				<div class="alert alert-dismissible alert-danger notice">
+					<i class="fa-solid fa-xmark"></i><strong>Attenzione </strong> {{ flash_message|trans|raw }}
+					<button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"></button>
+				</div>
+			{% endfor %}
+             
+            <div id="wrapper">
+
+                {% block header %}
+                    <!-- Header -->
+                    <header id="header">
+                        <div id="header-wrap">
+                            <div class="container">
+                                <div class="header-row">
+
+                                    <div id="logo">
+                                        <a href="{{ path ('homepage') }}"><img class="logo-default" src="{{ asset ('images/graphics_2025_12_12/logo.webp') }}" alt="Antica farmacia dei sani"></a>
+                                    </div>
+
+                                    <div class="primary-menu-trigger">
+                                        <button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+                                            <span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+                                        </button>
+                                    </div>
+                                    <div class="header-misc custom-header-misc"> 
+                                        <a href="https://prenotazioni.cooperto.it/in/1adda60f-bf68-46" target="_blank" class="button button-pr rounded-pill ls-0 my-0 ms-2 custom-reservation-btn">Prenota</a>
+                                    </div>
+                                    
+                                    {#<div class="header-misc d-flex">
+                                        <a href="https://prenotazioni.cooperto.it/in/1adda60f-bf68-46" class="button" style="border-radius: 1rem;">Riserva il tuo tavolo</a>
+                                    </div>#}
+
+                                    <!-- Primary Navigation
+                                    ============================================= -->
+                                    <nav class="primary-menu" style="position:inherit;">
+                                        <ul class="menu-container">
+                                            {% if app.request.get("_route") != "wine_list" and app.request.get("_route") != "wine_list_category" %}
+                                                <li class="menu-item"><a class="menu-link {% if app.request.get("_route") == "tavern"%}color_pr{% endif %}" href="{{ path ('tavern') }}"><div>L'Osteria</div></a></li>
+                                                <li class="menu-item"><a class="menu-link {% if app.request.get("_route") == "kitchen"%}color_pr{% endif %}" href="{{ path ('kitchen') }}"><div>Cucina</div></a></li>
+                                                <li class="menu-item">
+                                                    <a class="color_sc menu-link {% if app.request.get("_route") == "winery"%}color_pr{% endif %}" href="{{ path ('winery') }}"><div>Vineria</div></a>
+                                                    {% if wl.hasActiveWineCategories %}
+                                                        <ul class="sub-menu-container mega-menu-column">
+                                                            <li class="menu-item sub-menu"><a class="color_sc menu-link" href="{{ path ('wine_list') }}" target="_blank"><div>Lista vini</div></a></li>
+                                                        </ul>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="menu-item"><a class="menu-link {% if app.request.get("_route") == "not_only_wine"%}color_pr{% endif %}" href="{{ path ('not_only_wine') }}"><div>Non solo vino</div></a></li>
+                                                {#<li class="menu-item"><a class="menu-link {% if app.request.get("_route") == "reservation"%}color_pr{% endif %}" href="{{ path ('reservation') }}"><div>Prenotazioni</div></a></li>#}
+                                                <li class="menu-item"><a class="menu-link {% if app.request.get("_route") == "news"%}color_pr{% endif %}" href="{{ path ('news') }}"><div>Eventi & Novità</div></a></li>
+                                                <li class="menu-item"><a class="menu-link {% if app.request.get("_route") == "gifts"%}color_pr{% endif %}" href="{{ path ('gifts') }}"><div>Regalistica & Voucher</div></a></li>
+
+
+                                                {% if app.user != null %}
+                                                    {% if is_granted ("ROLE_ADMIN") %}
+                                                        <li class="menu-item"><a class="menu-link {% if app.request.get("_route") == "news"%}color_pr{% endif %}" href="{{ path ('admin_index') }}"><div>Scrivania</div></a></li>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% else %}
+                                                <li class="menu-item"><a class="menu-link {% if app.request.get("_route") == "wine_list" %}color_pr{% endif %}" href="{{ path('wine_list') }}"><div>Tutti</div></a></li>
+                                                {% for c in categories|sort((a,b) => a.priority <=> b.priority) %}
+                                                    {% if c.isActive == 1 and c.hasActiveWines %}
+                                                        <li class="menu-item"><a class="menu-link" href="{{ path ('wine_list_category', { 'slug': c.slug }) }}"><div>{{ c.name }}</div></a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        </ul>                                    
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-wrap-clone"></div>
+                    </header>
+                {% endblock %}
+
+                {% block slider %}
+                    <section id="slider" class="slider-element min-vh-90 m_b_40p" style="background: url('{% block sliderImgPath %}{{ asset ('images/graphics_2025_12_12/home/video-cover.webp') }}{% endblock %}') center center; background-size: cover;">
+                        <div class="slider-inner">
+                            {% block sliderInner %}
+                                <div class="vertical-middle slider-element-fade">
+                                    <div class="container text-center">
+                                        <div class="heading-block border-bottom-0 mb-0">
+                                            <h1 class="slider_title">{% block sliderTitleText %}{% endblock %}</h1>
+                                            <h3 class="slider_subtitle">{% block sliderSubtitleText %}{% endblock %}</h3>
+                                        </div>
+                                    </div>
+                                </div> 
+                                {% block sliderInnerVideo %}{% endblock %}
+                            {% endblock %}
+                        </div>
+                    </section>
+                {% endblock %}
+                
+                {% block content %}
+                {% endblock %}
+
+                {% set footerDark = true %}
+                {% block footer %}
+                    <!-- Footer -->
+                    <footer id="footer" {% if footerDark %}class="dark bg_w"{% else %}class="bg_w"{% endif %}>
+                        <div class="section parallax m-0 border-top-0 {% if footerDark %}dark{% endif %}">
+                            {% if footerDark %}
+                                <img src="{{ asset ('images/graphics_2025_12_12/texture-dark.webp') }}" class="parallax-bg obj_cover img_parallax" alt="texture">
+                            {% else %}
+                                <img src="{{ asset ('images/graphics_2025_12_12/texture-light.webp') }}" class="parallax-bg img_parallax" alt="texture">
+                            {% endif %}
+                            <div class="container jost_font p_tb_30p">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 offset-lg-1">
+                                        <h3 class="whisper_font h3_title m_b_none">Dove siamo</h3>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3224.678015182104!2d8.899650860549674!3d45.60910376003873!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47868c4b779b1801%3A0x89845266a1bf0561!2sAntica%20Farmacia%20dei%20Sani!5e0!3m2!1sit!2sus!4v1707207846585!5m2!1sit!2sus" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                                    
+                                    </div>
+                                    <div class="col-12 col-lg-5">
+                                        <h3 class="whisper_font h3_title m_b_none">Orari</h3>
+                                        <table class="table f_w_300 b_none jost_font {% if footerDark %}color_w{% endif %}">
+                                            <tr>
+                                                <td class="td_w_100p">Lunedì</td>
+                                                <td>Chiuso</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Martedì</td>
+                                                <td>19.30 - 22.30</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mercoledì</td>
+                                                <td>12.30 - 14.30 / 19.30 - 22.30</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Giovedì</td>
+                                                <td>12.30 - 14.30 / 19.30 - 22.30</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Venerdì</td>
+                                                <td>12.30 - 14.30 / 19.30 - 22.30</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sabato</td>
+                                                <td>12.30 - 14.30 / 19.30 - 22.30</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Domenica</td>
+                                                <td>12.30 - 14.30 / 19.30 - 22.30</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-12 col-lg-6 offset-lg-1 font_18 jost_font">
+                                        <h3 class="whisper_font h3_title m_b_none">Contatti</h3>
+                                        <label>Base Food Srl</label><br>
+                                        <label>Via E. Cantoni, 51, 21053 Castellanza VA</label><br>
+                                        <label>Capitale sociale: 10.000 €</label><br>
+                                        <label>Numero REA azienda:  VA-353568</label><br>
+                                        <label>E-mail: <a href="mailto:info@anticafarmaciadeisani.it" {% if footerDark %}class="color_w"{% endif %}><u>info@anticafarmaciadeisani.it</u></a></label><br>
+                                        Telefono: <a href="tel:0331 502549" {% if footerDark %}class="color_w"{% endif %}><u>0331 502549</u></a>
+                                    </div>
+                                    <div class="col-12 col-lg-5">
+                                        <h3 class="whisper_font h3_title m_b_none">Social</h3>
+                                        <a href="https://www.facebook.com/anticafarmaciadeisani/" target="_blank" class="social-icon si-large h-bg-facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="https://www.instagram.com/anticafarmaciadeisani/" target="_blank" class="social-icon si-large h-bg-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-instagram"></i></a>
+                                        <a href="https://www.youtube.com/@anticafarmaciadeisani7646" target="_blank" class="social-icon si-large h-bg-youtube" aria-label="Youtube"><i class="fa-brands fa-youtube"></i><i class="fa-brands fa-youtube"></i></a>
+                                    </div>
+                                    <div class="col-12 text-center m_t_20p">
+                                        <p class="m_b_none m_t_10p font_16 {% if footerDark %}color_w{% endif %}">Copyrights &copy; {{ "now"|date('Y') }} - Tutti i diritti riservati da Antica Farmacia dei Sani - <a href="{{ path('cookies') }}" {% if footerDark %}class="color_w"{% endif %}>Cookie</a> - <a href="https://www.rpgmultimedia.it" target="_blank" {% if footerDark %}class="color_w"{% endif %}>Realizzato da R.P.G.</a> - <a {% if footerDark %}class="color_w"{% endif %} href="{{ path ('login') }}">Area riservata</a></p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                {% endblock %}
+                
+                {# Cookie Modal #}
+	            {% include 'components/modals/cookies.html.twig' %}
+            </div>
+
+        	<div id="gotoTop" class="uil uil-angle-up"></div>
+        {% endblock %}
+       
+        {% block javascripts %}
+			<script src="{{ asset ('js/functions.bundle.js') }}"></script>
+			<script src="{{ asset ('js/plugins.min.js') }}"></script>
+			<script src="{{ asset ('js/components/datepicker.js') }}"></script>
+            <script type="text/javascript" src="{{ asset ('js/jquery.richtext.min.js') }}"></script>
+            
+            {# Google Analytics #}
+	        {% include 'components/js/ga4.html.twig' %}
+
+            {# Cookie #}
+            {% include 'components/js/cookies.html.twig' %}
+            
+        {% endblock %}
+                
+        {% block modals %}
+        {% endblock %}
+    </body>
+</html>
