@@ -292,7 +292,14 @@ a:hover{color:var(--k-terracotta-deep);}
 
 @media (max-width:880px){
   .k-hero-grid{grid-template-columns:1fr;gap:40px;}
-  .k-hero-art{max-width:420px;margin:0 auto;}
+  .k-hero-art{width:100%;max-width:420px;margin:0 auto;}
+  .k-nav nav{display:none;}
+}
+@media (max-width:560px){
+  .k-hero{padding:3rem 0 4rem;}
+  .k-hero-tag{padding:10px 12px;font-size:.78rem;}
+  .k-hero-tag-1{left:0;}
+  .k-hero-tag-2{right:0;}
 }
 
 /* ─── Sections ────────────────────────────────────────────── */
@@ -555,7 +562,7 @@ a:hover{color:var(--k-terracotta-deep);}
 }
 .k-about-img::after{
   content:"";position:absolute;inset:0;
-  background:url("assets/grid.png") center/200px repeat;opacity:.18;mix-blend-mode:multiply;
+  background:url("../images/grid.png") center/200px repeat;opacity:.18;mix-blend-mode:multiply;
   pointer-events:none;
 }
 .k-about-sig{

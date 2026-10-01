@@ -1,9 +1,12 @@
 (function () {
   'use strict';
 
-  var BASE_PRICE = 8;
-  var DECO_COST  = { none: 0, fiori: 2, glitter: 1, oro: 3, perle: 2, luna: 2 };
-  var CORD_COST  = { silver: 0, gold: 1, leather: 2, chain: 2 };
+  var D = window.KAJ;
+  var BASE_PRICE = D.basePrice;
+  var DECO_COST  = {};
+  var CORD_COST  = {};
+  D.decos.forEach(function (d) { DECO_COST[d.id] = d.cost; });
+  D.cords.forEach(function (c) { CORD_COST[c.id] = c.cost; });
 
   // ── Stato ──────────────────────────────────────────────────────
   var state = {
@@ -21,6 +24,12 @@
     contatto:    '',
     note:        ''
   };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
 
   function total() {
     return BASE_PRICE + (DECO_COST[state.deco] || 0) + (CORD_COST[state.cord] || 0);
@@ -360,8 +369,8 @@
       '<div class="k-config-recap-row"><span>Colore</span><strong>' + state.colorLabel + '</strong></div>' +
       '<div class="k-config-recap-row"><span>Decorazione</span><strong>' + state.decoLabel + '</strong></div>' +
       '<div class="k-config-recap-row"><span>Cordino</span><strong>' + state.cordLabel + '</strong></div>' +
-      '<div class="k-config-recap-row" style="padding-top:10px;border-top:1px solid var(--k-line)"><span>Per</span><strong>' + (state.nome || '—') + '</strong></div>' +
-      '<div class="k-config-recap-row"><span>' + (state.channel === 'instagram' ? 'Instagram' : 'Email') + '</span><strong>' + (state.contatto || '—') + '</strong></div>' +
+      '<div class="k-config-recap-row" style="padding-top:10px;border-top:1px solid var(--k-line)"><span>Per</span><strong>' + esc(state.nome || '—') + '</strong></div>' +
+      '<div class="k-config-recap-row"><span>' + (state.channel === 'instagram' ? 'Instagram' : 'Email') + '</span><strong>' + esc(state.contatto || '—') + '</strong></div>' +
       '<div class="k-config-recap-row total"><span>Totale</span><strong>€' + t + '</strong></div>';
     var subj = 'Ordine portachiavi ' + state.letter + ' — ' + (state.nome || '');
     var body = 'Ciao Alice,\n\nSono ' + (state.nome || '') + '.\nMi puoi ricontattare su ' +
@@ -373,7 +382,7 @@
       '\n- Totale: €'      + t +
       (state.note ? '\n\nNote: ' + state.note : '') + '\n\nGrazie!';
     document.getElementById('modal-email').href =
-      'mailto:rizzoalice.ar@gmail.com?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
+      'mailto:' + D.email + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
     document.getElementById('send-modal').classList.add('show');
   });
 
